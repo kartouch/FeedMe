@@ -27,10 +27,9 @@ ActiveRecord::Schema.define(version: 20160112211226) do
   create_table "feeds", force: :cascade do |t|
     t.string  "url"
     t.string  "title"
-    t.integer "category_id"
+    t.string "category"
   end
 
-  add_index "feeds", ["category_id"], name: "index_feeds_on_category_id", using: :btree
 
   create_table "sources", force: :cascade do |t|
     t.string  "url"
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20160112211226) do
   add_index "sources", ["author_id"], name: "index_sources_on_author_id", using: :btree
   add_index "sources", ["category_id"], name: "index_sources_on_category_id", using: :btree
 
-  add_foreign_key "feeds", "categories"
   add_foreign_key "sources", "authors"
   add_foreign_key "sources", "categories"
 end

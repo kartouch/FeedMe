@@ -5,11 +5,11 @@
   </head>
   <body>
     <div class="container">
-      <h1>FeedMe!</h1>
+      <h1>FeedMe!<small> Got <%= Feed.all.count %> feeds in db..</small</h1>
         <table class="table table-hover">
             <% @feeds.each do |feed| %>
           <tr>
-            <td><%= Category.find(feed.category_id).name %></td>
+            <td><%= feed.category %></td>
             <td><a href="<%= feed.url %>"><%= feed.title %></a></td>
           </tr>
             <% end%>

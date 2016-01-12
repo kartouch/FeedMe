@@ -20,7 +20,7 @@ namespace :feed do
     begin
       feed = Feedjira::Feed.fetch_and_parse source.url
       feed.entries.each do |e|
-          Feed.create(title: e.title, url: e.url, category_id: source.category_id)
+          Feed.create(title: e.title, url: e.url, category: Category.find(source.category_id).name)
       end
     rescue
       next
