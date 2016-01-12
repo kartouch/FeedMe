@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>FeedMe!</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>FeedMe!</h1>
+        <table class="table table-hover">
+            <% @feeds.each do |feed| %>
+          <tr>
+            <td><%= Category.find(feed.category_id).name %></td>
+            <td><a href="<%= feed.url %>"><%= feed.title %></a></td>
+          </tr>
+            <% end%>
+        </table>
+    </div>
+    </div>
+  </body>
+</html>
