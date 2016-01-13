@@ -46,7 +46,7 @@ development:
 production:
   <<: *default
   database: <%= ENV['POSTGRESQL_DATABASE']%>
-  username: <%= ENV['POSTGRESQL_USERNAME']%>
+  username: <%= ENV['POSTGRESQL_USER']%>
   password: <%= ENV['POSTGRESQL_PASSWORD']%>
   host: <%= ENV['POSTGRESQL_SERVICE_HOST']%>
   port: 5432
