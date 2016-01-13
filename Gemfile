@@ -9,4 +9,6 @@ gem 'rake'
 gem 'sinatra-activerecord'
 gem 'sinatra-contrib'
 gem 'feedjira'
+gem 'magic_encoding'
+
 # gem 'redis', '~>3.2'
