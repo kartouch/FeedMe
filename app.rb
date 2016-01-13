@@ -1,7 +1,7 @@
 require 'sinatra'
 require "sinatra/activerecord"
 require 'sinatra/json'
-require 'redis'
+#require 'redis'
 require 'ostruct'
 require_relative './models/feed.rb'
 require_relative './models/category.rb'
