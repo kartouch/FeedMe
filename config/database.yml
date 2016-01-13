@@ -45,8 +45,8 @@ development:
 
 production:
   <<: *default
-  database: feedme
-  username: kartouch
-  password: supersecret
+  database: <%= ENV['POSTGRESQL_DATABASE']%>
+  username: <%= ENV['POSTGRESQL_USERNAME']%>
+  password: <%= ENV['POSTGRESQL_PASSWORD']%>
   host: <%= ENV['POSTGRESQL_SERVICE_HOST']%>
   port: 5432
