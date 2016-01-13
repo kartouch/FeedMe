@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "sinatra/activerecord/rake"
 require 'feedjira'
 require_relative './models/author.rb'
