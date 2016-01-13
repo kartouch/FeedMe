@@ -43,6 +43,10 @@ development:
 #  <<: *default
 #database: feedme_test
 
-#production:
-#  <<: *default
-#  database: feedme_production
+production:
+  <<: *default
+  database: <%= ENV['POSTGRESQL_DATABASE']%>
+  username: <%= ENV['POSTGRESQL_USERNAME']%>
+  password: <%= ENV['POSTGRESQL_PASSWORD']%>
+  host: <%= ENV['POSTGRESQL_SEVICE_HOST']%>
+  port: 5432
