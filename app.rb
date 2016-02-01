@@ -23,7 +23,6 @@ class FeedMe < Sinatra::Base
       else
         redis.get("feeds")
         @feeds = JSON.parse(redis.get("feeds"), object_class: OpenStruct)
-        @feeds = Feed.find_by_sql("select * from feeds order by random() limit 3000")
         erb :index
       end
    end
