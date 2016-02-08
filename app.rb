@@ -17,7 +17,7 @@ class FeedMe < Sinatra::Base
        redis = Redis.new(host: "#{ENV['REDIS_SERVICE_HOST']}")
        if redis.get("feeds").nil?
         redis.set("feeds", Feed.find_by_sql("select * from feeds order by random() limit 3000").to_json)
-        redis.expire("feeds",600)
+        redis.expire("feeds",3600)
         @feeds = JSON.parse(redis.get("feeds"), object_class: OpenStruct)
         erb :index
       else
@@ -31,7 +31,7 @@ class FeedMe < Sinatra::Base
       redis = Redis.new(host: "#{ENV['REDIS_SERVICE_HOST']}")
       if redis.get("feeds").nil?
         redis.set("feeds", Feed.find_by_sql("select * from feeds order by random() limit 3000").to_json)
-        redis.expire("feeds",600)
+        redis.expire("feeds",3600)
         redis.get("feeds")
       else
         redis.get("feeds")

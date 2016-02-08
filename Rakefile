@@ -6,6 +6,7 @@ require_relative './models/source.rb'
 require_relative './models/feed.rb'
 require_relative './models/category.rb'
 require 'csv'
+require 'redis'
 
 namespace :db do
     task :load_config do
@@ -27,6 +28,9 @@ namespace :feed do
       next
     end
     end
+    redis = Redis.new(host: "#{ENV['REDIS_SERVICE_HOST']}")
+    redis.set("feeds", Feed.find_by_sql("select * from feeds order by random() limit 3000").to_json)
+    redis.expire("feeds",3600)
   end
 end
 
