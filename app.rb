@@ -15,7 +15,7 @@ class FeedMe < Sinatra::Base
 
 
 get '/' do
-  @redis = Redis.new(host: "#{ENV['REDIS_SERVICE_HOST']}")
+  @redis = Redis.new(host: "#{ENV['REDIS_SERVICE_HOST']}", password: "#{ENV['REDIS_PASSWORD']}")
      if @redis.get("feeds").nil?
       @redis.set("feeds", Feed.find_by_sql("select * from feeds order by random() limit 3000").to_json)
       @redis.expire("feeds",300)
@@ -30,7 +30,7 @@ get '/' do
  end
 
  get '/feeds' do
- @redis = Redis.new(host: "#{ENV['REDIS_SERVICE_HOST']}")
+ @redis = Redis.new(host: "#{ENV['REDIS_SERVICE_HOST']}", password: "#{ENV['REDIS_PASSWORD']}")
     if @redis.get("feeds").nil?
       @redis.set("feeds", Feed.find_by_sql("select * from feeds order by random() limit 3000").to_json)
       @redis.expire("feeds",300)
